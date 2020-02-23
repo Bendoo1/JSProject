@@ -5,36 +5,27 @@ let turn;
 let good;
 let compTurn;
 let intervalId;
-let strict = false;
+let hardReset = true;
 let noise = true;
 let on = false;
 let win;
 
-const turnCounter = document.querySelector("#turn");
+const counter = document.querySelector("#turn");
 const topLeft = document.querySelector("#topleft");
 const topRight = document.querySelector("#topright");
 const bottomLeft = document.querySelector("#bottomleft");
 const bottomRight = document.querySelector("#bottomright");
-const strictButton = document.querySelector("#strict");
 const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
-
-strictButton.addEventListener('change', (event) => {
-    if (strictButton.checked == true) {
-        strict = true; 
-    } else {
-        strict = false;
-    }
-});
 
 onButton.addEventListener('click', (event) => {
     if (onButton.checked == true) {
         on = true;
-        turnCounter.innerHTML = "-";
+        counter.innerHTML = "-";
         
     } else {
         on = false;
-        turnCounter.innerHTML = "";
+        counter.innerHTML = "";
         clearColor();
         clearInterval(intervalId);
     }
@@ -53,7 +44,7 @@ function play () {
     flash = 0;
     intervalId = 0;
     turn = 1;
-    turnCounter.innerHTML = 1;
+    counter.innerHTML = 1;
     good = true;
     for (let i = 0; i < 20; i++) {
         order.push(Math.floor(Math.random() * 4) + 1);
@@ -196,10 +187,20 @@ function check() {
     }
     if (good == false) {
         flashColor();
-        turnCounter.innerHTML = "NO!";
+        counter.innerHTML = "NO!";
         setTimeout(() =>{
-            turnCounter.innerHTML = turn;
+            counter.innerHTML = turn;
             clearColor();
+            
+            if (hardReset) {
+                play();
+            } else {
+                compTurn = true;
+                flash = 0;
+                playerOrder = [];
+                good = true;
+                intervalId = setInterval(gameTurn, 800);
+            }
         }, 800);
         
         noise = false;
@@ -209,14 +210,14 @@ function check() {
         playerOrder = [];
         compTurn = true;
         flash = 0;
-        turnCounter.innerHTML = turn;
+        counter.innerHTML = turn;
         intervalId = setInterval(gameTurn, 800);
     }
 }
 
 function winGame() {
     flashColor();
-        turnCounter.innerHTML = "WIN!";
+        counter.innerHTML = "WIN!";
         on = false;
         win = true;
 }
