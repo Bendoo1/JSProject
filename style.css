@@ -41,6 +41,12 @@ body {
   margin-top: 110px;
 }
 
+.text3 {
+  font-family: 'Saira Semi Condensed', cursive;
+  font-size: 40px;
+  display: inline;
+}
+
 .text2 {
   position: absolute;
   font-family: 'Saira Semi Condensed', cursive;
@@ -179,6 +185,6 @@ body {
   border-style: solid;
   border-width: 10px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 0%;
   box-shadow: 8px 8px 15px 5px #000000;
 }

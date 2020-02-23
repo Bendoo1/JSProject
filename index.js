@@ -17,11 +17,13 @@ const bottomLeft = document.querySelector("#bottomleft");
 const bottomRight = document.querySelector("#bottomright");
 const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
+const hiScore = document.querySelector("#hiscore");
 
 onButton.addEventListener('click', (event) => {
     if (onButton.checked == true) {
         on = true;
         counter.innerHTML = "-";
+        hiScore.innerHTML = 0;
         
     } else {
         on = false;
@@ -184,6 +186,10 @@ function check() {
         
     if (playerOrder.length == 20 && good == true) {
         winGame();
+        while (winGame() == true) {
+            flashColor(), 800;
+            clearColor(), 800;
+        }
     }
     if (good == false) {
         flashColor();
@@ -207,6 +213,9 @@ function check() {
     }
     if (turn == playerOrder.length && good == true && !win) {
         turn++;
+            if (hiScore.innerHTML == playerOrder.length - 1) {
+                hiScore.innerHTML++;
+            }
         playerOrder = [];
         compTurn = true;
         flash = 0;
@@ -217,7 +226,7 @@ function check() {
 
 function winGame() {
     flashColor();
-        counter.innerHTML = "WIN!";
+        counter.innerHTML = "GZ!";
         on = false;
         win = true;
 }
