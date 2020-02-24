@@ -29,9 +29,9 @@ Here you can find a list of available features from the Simon game.
 
 ### Technologies Used #
 
--  **HTML**
+- **HTML**
     - Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser.
 - **CSS**
     - Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML.
--    **JS**
+- **JS**
     - JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions.
