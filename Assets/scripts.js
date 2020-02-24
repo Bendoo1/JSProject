@@ -1,3 +1,5 @@
+// I referenced a YouTube video for around 50% of the logic used within this, this can be found here - https://www.youtube.com/watch?v=n_ec3eowFLQ
+
 let order = [];
 let playerOrder = [];
 let flash;
