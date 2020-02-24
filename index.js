@@ -19,8 +19,8 @@ const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
 const hiScore = document.querySelector("#hiscore");
 
-onButton.addEventListener('click', (event) => {
-    if (onButton.checked == true) {
+onButton.addEventListener('click', () => {
+    if (onButton.checked) {
         on = true;
         counter.innerHTML = "-";
         hiScore.innerHTML = 0;
@@ -33,7 +33,7 @@ onButton.addEventListener('click', (event) => {
     }
 });
 
-startButton.addEventListener('click', (event) => {
+startButton.addEventListener('click', () => {
     if (on || win) {
         play();
     }
@@ -128,7 +128,7 @@ function flashColor() {
     bottomRight.style.backgroundColor = "lightskyblue";
 }
 
-topLeft.addEventListener ('click', (event) => {
+topLeft.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(1);
         check();
@@ -141,7 +141,7 @@ topLeft.addEventListener ('click', (event) => {
     }
 });
 
-topRight.addEventListener ('click', (event) => {
+topRight.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(2);
         check();
@@ -154,7 +154,7 @@ topRight.addEventListener ('click', (event) => {
     }
 });
 
-bottomLeft.addEventListener ('click', (event) => {
+bottomLeft.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(3);
         check();
@@ -167,7 +167,7 @@ bottomLeft.addEventListener ('click', (event) => {
     }
 });
 
-bottomRight.addEventListener ('click', (event) => {
+bottomRight.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(4);
         check();
@@ -184,14 +184,14 @@ function check() {
     if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length -1])
         good = false;
         
-    if (playerOrder.length == 20 && good == true) {
+    if (playerOrder.length == 20 && good) {
         winGame();
-        while (winGame() == true) {
-            flashColor(), 800;
-            clearColor(), 800;
+        while (winGame()) {
+            flashColor();
+            clearColor();
         }
     }
-    if (good == false) {
+    if (!good) {
         flashColor();
         counter.innerHTML = "NO!";
         setTimeout(() =>{
@@ -211,7 +211,7 @@ function check() {
         
         noise = false;
     }
-    if (turn == playerOrder.length && good == true && !win) {
+    if (turn == playerOrder.length && good && !win) {
         turn++;
             if (hiScore.innerHTML == playerOrder.length - 1) {
                 hiScore.innerHTML++;
