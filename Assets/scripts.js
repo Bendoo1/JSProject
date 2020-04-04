@@ -1,5 +1,7 @@
 // I referenced a YouTube video for around 50% of the logic used within this, this can be found here - https://www.youtube.com/watch?v=n_ec3eowFLQ
 
+
+//Defining variables used within the below functions//
 let order = [];
 let playerOrder = [];
 let flash;
@@ -12,6 +14,7 @@ let noise = true;
 let on = false;
 let win;
 
+//Defining constants used within the below functions//
 const counter = document.querySelector("#turn");
 const topLeft = document.querySelector("#topleft");
 const topRight = document.querySelector("#topright");
@@ -21,6 +24,7 @@ const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
 const hiScore = document.querySelector("#hiscore");
 
+//Adding operations to the 'on' button such as Count display and High Score display//
 onButton.addEventListener('click', () => {
     if (onButton.checked) {
         on = true;
@@ -34,13 +38,14 @@ onButton.addEventListener('click', () => {
         clearInterval(intervalId);
     }
 });
-
+//Setting the on button to allow the play function, this will also be available if the win function has been reached//
 startButton.addEventListener('click', () => {
     if (on || win) {
         play();
     }
 });
 
+//Setting up play function to act as constants throughout the game, this includes the random colour chosen by the computer, the turn array and setting other variables so that the player is not confused and the game is more readable//
 function play () {
     win = false;
     order = [];
@@ -58,9 +63,11 @@ function play () {
     intervalId = setInterval(gameTurn, 800);
 }
 
+//Initially set the on variable to false//
 function gameTurn () {
     on = false;
     
+    //Goes on to confirm that it is the player turn when a colour has flashed, the game is on and it is no longer the computers turn//
     if (flash == turn) {
         clearInterval(intervalId);
         compTurn = false;
@@ -68,6 +75,7 @@ function gameTurn () {
         on = true;
     }
     
+    //Computers turn will show the colour to be emulated by the player, it also increments the amount of colours shown if the player is successful in emulating the computer//
     if (compTurn) {
         clearColor();
         setTimeout(() => {
@@ -80,6 +88,7 @@ function gameTurn () {
     }
 }
 
+//The following functions (one, two, three and four) are to house porperties pertaining to clicking one of the four colours displayed in the game. This includes sound and colour.
 function one() {
     if (noise) {
         let audio = document.getElementById("clip1");
@@ -116,6 +125,7 @@ function four() {
     bottomRight.style.backgroundColor = "lightskyblue";
 }
 
+//Function is called upon to reset the colours back to their default values, this happens in a number of areas in this file//
 function clearColor() {
     topLeft.style.backgroundColor = "darkgreen";
     topRight.style.backgroundColor = "darkred";
@@ -123,6 +133,7 @@ function clearColor() {
     bottomRight.style.backgroundColor = "darkblue";
 }
 
+//Function is called upon to show the 'highlight' or 'flash' colour of each colour, these appear when clicked or when used by the computer to show the player the order//
 function flashColor() {
     topLeft.style.backgroundColor = "lightgreen";
     topRight.style.backgroundColor = "tomato";
@@ -130,6 +141,7 @@ function flashColor() {
     bottomRight.style.backgroundColor = "lightskyblue";
 }
 
+//Next 4 functions are used to give player feedback on the area they have clicked, colour is 'flashed', audio is played, then the colour is reset using 'clearColour'//
 topLeft.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(1);
@@ -182,10 +194,11 @@ bottomRight.addEventListener ('click', () => {
     }
 });
 
+//This function is used to check the order length of the player vs. the computer. If the orders don't match then the game will go back to the 'play' function// 
 function check() {
     if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length -1])
         good = false;
-        
+    //The player will win after 20 turns, or once the Count reads 20, the winGame function is defined later//
     if (playerOrder.length == 20 && good) {
         winGame();
         while (winGame()) {
@@ -193,6 +206,8 @@ function check() {
             clearColor();
         }
     }
+    
+    //good is when the order.length of the computer and player is the same, if this is not the case, the Count will flash 'NO!' and the game will go back to the 'play' function//
     if (!good) {
         flashColor();
         counter.innerHTML = "NO!";
@@ -225,7 +240,7 @@ function check() {
         intervalId = setInterval(gameTurn, 800);
     }
 }
-
+//winGame is ran when the Count is equal to 20. When this is the case, the game will reset to on=false, all colours will flash and 'GZ!' will be displayed in the Count//
 function winGame() {
     flashColor();
         counter.innerHTML = "GZ!";
