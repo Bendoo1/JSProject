@@ -1,54 +1,91 @@
+<!DOCTYPE html>
+
 <!--Elements of this file were borrowed from a YouTube video - https://www.youtube.com/watch?v=n_ec3eowFLQ-->
+
 
 <html>
 <head>
-  <title>Simon Game</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:900&display=swap" rel="stylesheet">
-  <link rel='stylesheet' href='Assets/style.css' type='text/css'/>
-  <!--Sounds used were created by myself in FL Studio 12-->
-  <audio id="clip1">
-  	<source src="sounds/simonsound1.wav"></source>
-  </audio>
-  <audio id="clip2">
-  	<source src="sounds/simonsound2.wav"></source>
-  </audio>
-  <audio id="clip3">
-  	<source src="sounds/simonsound3.wav"></source>
-  </audio>
-  <audio id="clip4">
-  	<source src="sounds/simonsound4.wav"></source>
-  </audio>
+    <title>Simon Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/style.css" type="text/css"/>
+    <script src="https://kit.fontawesome.com/ee465c1a5d.js" crossorigin="anonymous"></script>
+    <!--Sounds used were created by myself in FL Studio 12-->
+    <audio id="clip1">
+        <source src="sounds/simonsound1.wav"></source>
+    </audio>
+    <audio id="clip2">
+        <source src="sounds/simonsound2.wav"></source>
+    </audio>
+    <audio id="clip3">
+        <source src="sounds/simonsound3.wav"></source>
+    </audio>
+    <audio id="clip4">
+        <source src="sounds/simonsound4.wav"></source>
+    </audio>
 </head>
 
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo"><img src="https://is4-ssl.mzstatic.com/image/thumb/Purple128/v4/dc/a2/bb/dca2bb28-4869-90e0-2914-a8ad4c4dca98/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-9.png/246x0w.png" alt="Simon"></a>
+            <span class="brand-name">SIMON!</span>
+        </div>
+    </nav>
+</header>
+
 <body>
-  <div class="text3">
-    <span>High Score:</span>
-  </div>
-  <div id="hiscore" class="text3"></div>
-  <div id="outer-circle">
-    <div id="topleft"></div>
-    <div id="topright"></div>
-    <div id="bottomleft"></div>
-    <div id="bottomright"></div>
-    <div id="inner-circle">
-      <div id="title">SIMON!</div>
-      <div id="switch">
-        <input type="checkbox" class="toggle" id="on">
-        <button class="button" id="start">Start</button>
-      </div>
-      <div class="text1">
-        <span>POWER</span>
-      </div>
-      <div id="turn"></div>
-      <div class="text2">
-        COUNT
-      </div>
+<main role="main">
+    <div class="text3">
+        <span>High Score:</span>
     </div>
-  </div>
+    <div id="hiscore" class="text3"></div>
+    <div id="outer">
+        <div id="green"></div>
+        <div id="red"></div>
+        <div id="yellow"></div>
+        <div id="blue"></div>
+        <div id="inner">
+        <div id="title">SIMON!</div>
+        <div id="switch">
+            <input type="checkbox" class="toggle" id="on">
+            <button class="button btn" id="start">Start</button>
+        </div>
+        <div class="power">
+            <span>POWER</span>
+        </div>
+        <div id="turn"></div>
+        <div class="count">
+            COUNT
+        </div>
+        </div>
+    </div>
+</main>
 
-  <script src="Assets/scripts.js"></script>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col s2">
+                This application was created by Ben Bass AKA Big Shmeck
+            </div>
+            <div class="col s2 offset-s8">
+                <strong><u>Links</u></strong>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://github.com/Bendoo1?tab=repositories"><i class="fab fa-github-square"></i></a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://soundcloud.com/bigshmeck"><i class="fab fa-soundcloud"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 
+
+    <script src="Assets/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

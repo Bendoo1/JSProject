@@ -1,189 +1,261 @@
-/*This background was borrowed from a gradient background creator - https://www.gradient-animator.com/*/
-/*Some styles were also borrowed from the YouTube video mentioned in my scripts file - https://www.youtube.com/watch?v=n_ec3eowFLQ*/
+    /*This background was borrowed from a gradient background creator - https://www.gradient-animator.com/*/
+    /*Some styles were also borrowed from the YouTube video mentioned in my scripts file - https://www.youtube.com/watch?v=n_ec3eowFLQ*/
 
 body {
-  background: linear-gradient(182deg, #8b0000, #006400, #daa520, #00008b);
-  background-size: 800% 800%;
-  -webkit-animation: gradient 30s ease infinite;
-  -moz-animation: gradient 30s ease infinite;
-  animation: gradient 30s ease infinite;
+    background: linear-gradient(182deg, #8b0000, #006400, #daa520, #00008b);
+    background-size: 800% 800%;
+    -webkit-animation: gradient 30s ease infinite;
+    -moz-animation: gradient 30s ease infinite;
+    animation: gradient 30s ease infinite;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
-  @-webkit-keyframes gradient {
-      0%{background-position:53% 0%}
-      50%{background-position:48% 100%}
-      100%{background-position:53% 0%}
-  }
-  @-moz-keyframes gradient {
-      0%{background-position:53% 0%}
-      50%{background-position:48% 100%}
-      100%{background-position:53% 0%}
-  }
-  @keyframes gradient {
-      0%{background-position:53% 0%}
-      50%{background-position:48% 100%}
-      100%{background-position:53% 0%}
-  }
+
+main {
+        flex: 1 0 auto;
+}
+
+.page-footer {
+    background-color: #000000;
+    color: white;
+}
+
+@-webkit-keyframes gradient {
+        0%{background-position:53% 0%}
+        50%{background-position:48% 100%}
+        100%{background-position:53% 0%}
+}
+@-moz-keyframes gradient {
+        0%{background-position:53% 0%}
+        50%{background-position:48% 100%}
+        100%{background-position:53% 0%}
+}
+@keyframes gradient {
+        0%{background-position:53% 0%}
+        50%{background-position:48% 100%}
+        100%{background-position:53% 0%}
+}
 
 .toggle {
-  margin-left: 40px;
-  margin-right: -15px;
-  margin-top: 17px;
+    margin-left: 40px;
+    margin-right: -15px;
+    margin-top: 17px;
+    opacity: 1;
 }
 
 .button {
-  border-radius: 50%;
-  font-size: 1.5em;
-  background-color: lightgray;
-  margin-left: 35px;
+    font-size: 1.2em;
+    background-color: lightgray;
+    margin-left: 80px;
+    height: 33px;
+    font-family: 'Saira Semi Condensed', cursive;
+    color: black;
+}
+
+.btn {
+    padding: 0 2px;
+}
+
+.btn:hover {
+    background-color: darkgray;
+}
+
+.fab {
+    font-size: 60px;
+    color: white;
+}
+
+.fab:hover {
+    color: lightgray;
 }
 
 #switch {
-  position: absolute;
-  font-family: 'Saira Semi Condensed', cursive;
-  margin-left: 35px;
-  margin-top: 110px;
+    position: absolute;
+    font-family: 'Saira Semi Condensed', cursive;
+    margin-left: 35px;
+    margin-top: 110px;
 }
 
 .text3 {
-  font-family: 'Saira Semi Condensed', cursive;
-  font-size: 40px;
-  display: inline;
+    font-family: 'Saira Semi Condensed', cursive;
+    font-size: 40px;
+    display: inline;
 }
 
-.text2 {
-  position: absolute;
-  font-family: 'Saira Semi Condensed', cursive;
-  margin-left: 93px;
-  margin-top: 197px;
+.count {
+    position: absolute;
+    font-family: 'Saira Semi Condensed', cursive;
+    margin-left: 93px;
+    margin-top: 197px;
 }
 
-.text1 {
-  position: absolute;
-  font-family: 'Saira Semi Condensed', cursive;
-  margin-left: 55px;
-  margin-top: 100px;
+.power {
+    position: absolute;
+    font-family: 'Saira Semi Condensed', cursive;
+    margin-left: 55px;
+    margin-top: 100px;
+}
+
+img {
+    height: 100%;
+}
+
+.brand-logo {
+    height: 64px;
+}
+
+@media only screen and (max-width: 600px) {
+    .brand-logo {
+        height:50px
+    }
+}
+
+.brand-name {
+    color: black;
+    margin-left: 70px;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Saira Semi Condensed', cursive;
+    visibility: hidden;
+}
+
+@media only screen and (min-width: 993px) {
+    .brand-name {
+        visibility: visible;
+    }
+}
+
+.nav-wrapper {
+    background-color: white;
 }
 
 #title {
-  font-family: 'Saira Semi Condensed', cursive;
-  position: absolute;
-  font-size: 40px;
-  margin-left: 50px;
-  margin-top: 40px;
+    font-family: 'Saira Semi Condensed', cursive;
+    position: absolute;
+    font-size: 40px;
+    margin-left: 50px;
+    margin-top: 40px;
 }
 
 #turn {
-  position: absolute;
-  background: #330000;
-  color: red;
-  font-family: courier;
-  font-size: 20px;
-  height: 30px;
-  width: 50px;
-  margin-left: 90px;
-  margin-top: 170px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 30px;
+    position: absolute;
+    background: #330000;
+    color: red;
+    font-family: courier;
+    font-size: 20px;
+    height: 30px;
+    width: 50px;
+    margin-left: 90px;
+    margin-top: 170px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
 }
 
-#topleft {
-  position: absolute;
-  height: 250px;
-  width: 250px;
-  border-radius: 100% 0 0 0;
-  -moz-border-radius: 100% 0 0 0;
-  -webkit-border-radius: 100% 0 0 0;
-  background: #006400;
-  top: 50%;
-  left: 50%;
-  margin: -250px 0px 0px -250px;
-  border-style: solid;
-  border-width: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+#green {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 100% 0 0 0;
+    -moz-border-radius: 100% 0 0 0;
+    -webkit-border-radius: 100% 0 0 0;
+    background: #006400;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0px 0px -250px;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-#topright {
-  position: absolute;
-  margin: -250px 0px 0px 0px;
-  height: 250px;
-  width: 250px;
-  border-radius: 0 100% 0 0;
-  -moz-border-radius: 0 100% 0 0;
-  -webkit-border-radius: 0 100% 0 0;
-  background: #8b0000;
-  top: 50%;
-  left: 50%;
-  border-style: solid;
-  border-width: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+#red {
+    position: absolute;
+    margin: -250px 0px 0px 0px;
+    height: 250px;
+    width: 250px;
+    border-radius: 0 100% 0 0;
+    -moz-border-radius: 0 100% 0 0;
+    -webkit-border-radius: 0 100% 0 0;
+    background: #8b0000;
+    top: 50%;
+    left: 50%;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-#bottomleft {
-  position: absolute;
-  height: 250px;
-  width: 250px;
-  border-radius: 0 0 0 100%;
-  -moz-border-radius: 0 0 0 100%;
-  -webkit-border-radius: 0 0 0 100%;
-  background: #daa520;
-  top: 50%;
-  left: 50%;
-  margin: 0px -250px 0px -250px;
-  border-style: solid;
-  border-width: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+#yellow {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 0 0 0 100%;
+    -moz-border-radius: 0 0 0 100%;
+    -webkit-border-radius: 0 0 0 100%;
+    background: #daa520;
+    top: 50%;
+    left: 50%;
+    margin: 0px -250px 0px -250px;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-#bottomright {
-  position: absolute;
-  height: 250px;
-  width: 250px;
-  border-radius: 0 0 100% 0;
-  -moz-border-radius: 0 0 100% 0;
-  -webkit-border-radius: 0 0 100% 0;
-  background: #00008b;
-  top: 50%;
-  left: 50%;
-  margin: 0px 0px -250px 0px;
-  border-style: solid;
-  border-width: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+#blue {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 0 0 100% 0;
+    -moz-border-radius: 0 0 100% 0;
+    -webkit-border-radius: 0 0 100% 0;
+    background: #00008b;
+    top: 50%;
+    left: 50%;
+    margin: 0px 0px -250px 0px;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-#inner-circle {
-  position: absolute;
-  background: grey;
-  border-radius: 50%;
-  height: 250px;
-  width: 250px;
-  border-style: solid;
-  border-width: 10px;
-  top: 50%;
-  left: 50%;
-  margin: -125px 0px 0px -125px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+#inner {
+    position: absolute;
+    background: grey;
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    border-style: solid;
+    border-width: 10px;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0px 0px -125px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-#outer-circle {
-  background: #385a94;
-  border-radius: 50%;
-  height: 500px;
-  width: 500px;
-  position: relative;
-  border-style: solid;
-  border-width: 10px;
-  margin: auto;
-  margin-top: 0%;
-  box-shadow: 8px 8px 15px 5px #000000;
+#outer {
+    background: #385a94;
+    border-radius: 50%;
+    height: 500px;
+    width: 500px;
+    position: relative;
+    border-style: solid;
+    border-width: 10px;
+    margin: auto;
+    margin-top: 0%;
+    box-shadow: 8px 8px 15px 5px #000000;
+}
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: absolute;
+    opacity: 1;
+    pointer-events:visibleFill;
 }

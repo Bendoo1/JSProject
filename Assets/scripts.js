@@ -16,10 +16,10 @@ let win;
 
 //Defining constants used within the below functions//
 const counter = document.querySelector("#turn");
-const topLeft = document.querySelector("#topleft");
-const topRight = document.querySelector("#topright");
-const bottomLeft = document.querySelector("#bottomleft");
-const bottomRight = document.querySelector("#bottomright");
+const green = document.querySelector("#green");
+const red = document.querySelector("#red");
+const yellow = document.querySelector("#yellow");
+const blue = document.querySelector("#blue");
 const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
 const hiScore = document.querySelector("#hiscore");
@@ -95,7 +95,7 @@ function one() {
         audio.play();
     }
     noise = true;
-    topLeft.style.backgroundColor = "lightgreen";
+    green.style.backgroundColor = "lightgreen";
 }
 
 function two() {
@@ -104,7 +104,7 @@ function two() {
         audio.play();
     }
     noise = true;
-    topRight.style.backgroundColor = "tomato";
+    red.style.backgroundColor = "tomato";
 }
 
 function three() {
@@ -113,7 +113,7 @@ function three() {
         audio.play();
     }
     noise = true;
-    bottomLeft.style.backgroundColor = "yellow";
+    yellow.style.backgroundColor = "yellow";
 }
 
 function four() {
@@ -122,27 +122,27 @@ function four() {
         audio.play();
     }
     noise = true;
-    bottomRight.style.backgroundColor = "lightskyblue";
+    blue.style.backgroundColor = "lightskyblue";
 }
 
 //Function is called upon to reset the colours back to their default values, this happens in a number of areas in this file//
 function clearColor() {
-    topLeft.style.backgroundColor = "darkgreen";
-    topRight.style.backgroundColor = "darkred";
-    bottomLeft.style.backgroundColor = "goldenrod";
-    bottomRight.style.backgroundColor = "darkblue";
+    green.style.backgroundColor = "darkgreen";
+    red.style.backgroundColor = "darkred";
+    yellow.style.backgroundColor = "goldenrod";
+    blue.style.backgroundColor = "darkblue";
 }
 
 //Function is called upon to show the 'highlight' or 'flash' colour of each colour, these appear when clicked or when used by the computer to show the player the order//
 function flashColor() {
-    topLeft.style.backgroundColor = "lightgreen";
-    topRight.style.backgroundColor = "tomato";
-    bottomLeft.style.backgroundColor = "yellow";
-    bottomRight.style.backgroundColor = "lightskyblue";
+    green.style.backgroundColor = "lightgreen";
+    red.style.backgroundColor = "tomato";
+    yellow.style.backgroundColor = "yellow";
+    blue.style.backgroundColor = "lightskyblue";
 }
 
 //Next 4 functions are used to give player feedback on the area they have clicked, colour is 'flashed', audio is played, then the colour is reset using 'clearColour'//
-topLeft.addEventListener ('click', () => {
+green.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(1);
         check();
@@ -155,7 +155,7 @@ topLeft.addEventListener ('click', () => {
     }
 });
 
-topRight.addEventListener ('click', () => {
+red.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(2);
         check();
@@ -168,7 +168,7 @@ topRight.addEventListener ('click', () => {
     }
 });
 
-bottomLeft.addEventListener ('click', () => {
+yellow.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(3);
         check();
@@ -181,7 +181,7 @@ bottomLeft.addEventListener ('click', () => {
     }
 });
 
-bottomRight.addEventListener ('click', () => {
+blue.addEventListener ('click', () => {
     if (on) {
         playerOrder.push(4);
         check();
