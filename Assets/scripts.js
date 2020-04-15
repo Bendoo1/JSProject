@@ -2,55 +2,57 @@
 
 
 //Defining variables used within the below functions//
-let order = [];
-let playerOrder = [];
-let flash;
 let turn;
 let good;
 let compTurn;
 let intervalId;
 let hardReset = true;
-let noise = true;
-let on = false;
-let win;
+let sound = true;
+let powerOn = false;
+let playerWin;
+let order = [];
+let playerOrder = [];
+let highlight;
+
 
 //Defining constants used within the below functions//
+const onButton = document.querySelector("#powerOn");
+const startButton = document.querySelector("#start-button");
+const hiScore = document.querySelector("#hiscore");
 const counter = document.querySelector("#turn");
 const green = document.querySelector("#green");
 const red = document.querySelector("#red");
 const yellow = document.querySelector("#yellow");
 const blue = document.querySelector("#blue");
-const onButton = document.querySelector("#on");
-const startButton = document.querySelector("#start");
-const hiScore = document.querySelector("#hiscore");
 
-//Adding operations to the 'on' button such as Count display and High Score display//
+
+//Adding operations to the 'powerOn' button such as Count display and High Score display//
 onButton.addEventListener('click', () => {
     if (onButton.checked) {
-        on = true;
+        powerOn = true;
         counter.innerHTML = "-";
         hiScore.innerHTML = 0;
         
     } else {
-        on = false;
+        powerOn = false;
         counter.innerHTML = "";
-        clearColor();
+        resetColor();
         clearInterval(intervalId);
     }
 });
-//Setting the on button to allow the play function, this will also be available if the win function has been reached//
+//Setting the powerOn button to allow the play function, this will also be available if the playerWin function has been reached//
 startButton.addEventListener('click', () => {
-    if (on || win) {
-        play();
+    if (powerOn || playerWin) {
+        start();
     }
 });
 
 //Setting up play function to act as constants throughout the game, this includes the random colour chosen by the computer, the turn array and setting other variables so that the player is not confused and the game is more readable//
-function play () {
-    win = false;
+function start () {
+    playerWin = false;
     order = [];
     playerOrder = [];
-    flash = 0;
+    highlight = 0;
     intervalId = 0;
     turn = 1;
     counter.innerHTML = 1;
@@ -63,70 +65,70 @@ function play () {
     intervalId = setInterval(gameTurn, 800);
 }
 
-//Initially set the on variable to false//
+//Initially set the powerOn variable to false//
 function gameTurn () {
-    on = false;
+    powerOn = false;
     
-    //Goes on to confirm that it is the player turn when a colour has flashed, the game is on and it is no longer the computers turn//
-    if (flash == turn) {
+    //Goes on to confirm that it is the player turn when a colour has flashed, the game is powered on and it is no longer the computers turn//
+    if (highlight == turn) {
         clearInterval(intervalId);
         compTurn = false;
-        clearColor();
-        on = true;
+        resetColor();
+        powerOn = true;
     }
     
     //Computers turn will show the colour to be emulated by the player, it also increments the amount of colours shown if the player is successful in emulating the computer//
     if (compTurn) {
-        clearColor();
+        resetColor();
         setTimeout(() => {
-            if (order[flash] == 1) one();
-            if (order[flash] == 2) two();
-            if (order[flash] == 3) three();
-            if (order[flash] == 4) four();
-            flash++;
+            if (order[highlight] == 1) one();
+            if (order[highlight] == 2) two();
+            if (order[highlight] == 3) three();
+            if (order[highlight] == 4) four();
+            highlight++;
         }, 200);
     }
 }
 
 //The following functions (one, two, three and four) are to house porperties pertaining to clicking one of the four colours displayed in the game. This includes sound and colour.
 function one() {
-    if (noise) {
+    if (sound) {
         let audio = document.getElementById("clip1");
         audio.play();
     }
-    noise = true;
+    sound = true;
     green.style.backgroundColor = "lightgreen";
 }
 
 function two() {
-    if (noise) {
+    if (sound) {
         let audio = document.getElementById("clip2");
         audio.play();
     }
-    noise = true;
+    sound = true;
     red.style.backgroundColor = "tomato";
 }
 
 function three() {
-    if (noise) {
+    if (sound) {
         let audio = document.getElementById("clip3");
         audio.play();
     }
-    noise = true;
+    sound = true;
     yellow.style.backgroundColor = "yellow";
 }
 
 function four() {
-    if (noise) {
+    if (sound) {
         let audio = document.getElementById("clip4");
         audio.play();
     }
-    noise = true;
+    sound = true;
     blue.style.backgroundColor = "lightskyblue";
 }
 
 //Function is called upon to reset the colours back to their default values, this happens in a number of areas in this file//
-function clearColor() {
+function resetColor() {
     green.style.backgroundColor = "darkgreen";
     red.style.backgroundColor = "darkred";
     yellow.style.backgroundColor = "goldenrod";
@@ -143,107 +145,107 @@ function flashColor() {
 
 //Next 4 functions are used to give player feedback on the area they have clicked, colour is 'flashed', audio is played, then the colour is reset using 'clearColour'//
 green.addEventListener ('click', () => {
-    if (on) {
+    if (powerOn) {
         playerOrder.push(1);
         check();
         one();
-        if (!win) {
+        if (!playerWin) {
             setTimeout(() => {
-                clearColor();
+                resetColor();
             }, 300);
         }
     }
 });
 
 red.addEventListener ('click', () => {
-    if (on) {
+    if (powerOn) {
         playerOrder.push(2);
         check();
         two();
-        if (!win) {
+        if (!playerWin) {
             setTimeout(() => {
-                clearColor();
+                resetColor();
             }, 300);
         }
     }
 });
 
 yellow.addEventListener ('click', () => {
-    if (on) {
+    if (powerOn) {
         playerOrder.push(3);
         check();
         three();
-        if (!win) {
+        if (!playerWin) {
             setTimeout(() => {
-                clearColor();
+                resetColor();
             }, 300);
         }
     }
 });
 
 blue.addEventListener ('click', () => {
-    if (on) {
+    if (powerOn) {
         playerOrder.push(4);
         check();
         four();
-        if (!win) {
+        if (!playerWin) {
             setTimeout(() => {
-                clearColor();
+                resetColor();
             }, 300);
         }
     }
 });
 
-//This function is used to check the order length of the player vs. the computer. If the orders don't match then the game will go back to the 'play' function// 
+//This function is used to check the order length of the player vs. the computer. If the orders don't match then the game will go back to the 'start' function// 
 function check() {
     if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length -1])
         good = false;
-    //The player will win after 20 turns, or once the Count reads 20, the winGame function is defined later//
+    //The player will trigger the function playerWin after 20 turns, or once the Count reads 20, the winGame function is defined later//
     if (playerOrder.length == 20 && good) {
         winGame();
         while (winGame()) {
             flashColor();
-            clearColor();
+            resetColor();
         }
     }
     
-    //good is when the order.length of the computer and player is the same, if this is not the case, the Count will flash 'NO!' and the game will go back to the 'play' function//
+    //good is when the order.length of the computer and player is the same, if this is not the case, the Count will highlight 'NO!' and the game will go back to the 'play' function, due to the hardReset variable//
     if (!good) {
         flashColor();
         counter.innerHTML = "NO!";
         setTimeout(() =>{
             counter.innerHTML = turn;
-            clearColor();
+            resetColor();
             
             if (hardReset) {
-                play();
+                start();
             } else {
                 compTurn = true;
-                flash = 0;
+                highlight = 0;
                 playerOrder = [];
                 good = true;
                 intervalId = setInterval(gameTurn, 800);
             }
         }, 800);
         
-        noise = false;
+        sound = false;
     }
-    if (turn == playerOrder.length && good && !win) {
+    if (turn == playerOrder.length && good && !playerWin) {
         turn++;
             if (hiScore.innerHTML == playerOrder.length - 1) {
                 hiScore.innerHTML++;
             }
         playerOrder = [];
         compTurn = true;
-        flash = 0;
+        highlight = 0;
         counter.innerHTML = turn;
         intervalId = setInterval(gameTurn, 800);
     }
 }
-//winGame is ran when the Count is equal to 20. When this is the case, the game will reset to on=false, all colours will flash and 'GZ!' will be displayed in the Count//
+//winGame is ran when the Count is equal to 20. When this is the case, the game will reset to powerOn=false, all colours will highlight and 'GZ!' will be displayed in the Count//
 function winGame() {
     flashColor();
         counter.innerHTML = "GZ!";
-        on = false;
-        win = true;
+        powerOn = false;
+        playerWin = true;
 }
