@@ -24,6 +24,10 @@ const green = document.querySelector("#green");
 const red = document.querySelector("#red");
 const yellow = document.querySelector("#yellow");
 const blue = document.querySelector("#blue");
+const topLeft = 1;
+const topRight = 2;
+const bottomLeft = 3;
+const bottomRight = 4;
 
 
 //Adding operations to the 'powerOn' button such as Count display and High Score display//
@@ -32,13 +36,12 @@ onButton.addEventListener('click', () => {
         powerOn = true;
         counter.innerHTML = "-";
         hiScore.innerHTML = 0;
-        
-    } else {
-        powerOn = false;
-        counter.innerHTML = "";
-        resetColor();
-        clearInterval(intervalId);
+        return;
     }
+    powerOn = false;
+    counter.innerHTML = "";
+    resetColor();
+    clearInterval(intervalId);
 });
 //Setting the powerOn button to allow the play function, this will also be available if the playerWin function has been reached//
 startButton.addEventListener('click', () => {
@@ -81,10 +84,20 @@ function gameTurn () {
     if (compTurn) {
         resetColor();
         setTimeout(() => {
-            if (order[highlight] == 1) one();
-            if (order[highlight] == 2) two();
-            if (order[highlight] == 3) three();
-            if (order[highlight] == 4) four();
+            switch(order[highlight]){ 
+                case topLeft: 
+                    one();
+                break;
+                case topRight: 
+                    two();
+                break;
+                case bottomLeft: 
+                    three();
+                break;
+                case bottomRight: 
+                    four();
+                break;
+            }
             highlight++;
         }, 200);
     }
@@ -146,53 +159,57 @@ function flashColor() {
 //Next 4 functions are used to give player feedback on the area they have clicked, colour is 'flashed', audio is played, then the colour is reset using 'clearColour'//
 green.addEventListener ('click', () => {
     if (powerOn) {
-        playerOrder.push(1);
+        playerOrder.push(topLeft);
         check();
         one();
-        if (!playerWin) {
-            setTimeout(() => {
-                resetColor();
-            }, 300);
+        if (playerWin) {
+            return;
         }
+        setTimeout(() => {
+            resetColor();
+        }, 300);
     }
 });
 
 red.addEventListener ('click', () => {
     if (powerOn) {
-        playerOrder.push(2);
+        playerOrder.push(topRight);
         check();
         two();
-        if (!playerWin) {
-            setTimeout(() => {
-                resetColor();
-            }, 300);
+        if (playerWin) {
+            return;
         }
+        setTimeout(() => {
+            resetColor();
+        }, 300);
     }
 });
 
 yellow.addEventListener ('click', () => {
     if (powerOn) {
-        playerOrder.push(3);
+        playerOrder.push(bottomLeft);
         check();
         three();
-        if (!playerWin) {
-            setTimeout(() => {
-                resetColor();
-            }, 300);
+        if (playerWin) {
+            return;
         }
+        setTimeout(() => {
+            resetColor();
+        }, 300);
     }
 });
 
 blue.addEventListener ('click', () => {
     if (powerOn) {
-        playerOrder.push(4);
+        playerOrder.push(bottomRight);
         check();
         four();
-        if (!playerWin) {
-            setTimeout(() => {
-                resetColor();
-            }, 300);
+        if (playerWin) {
+            return;
         }
+        setTimeout(() => {
+            resetColor();
+        }, 300);
     }
 });
 
